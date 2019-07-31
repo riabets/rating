@@ -1,4 +1,4 @@
-# rating
+# Rating
 
 ## Project setup
 ```
