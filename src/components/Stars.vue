@@ -1,18 +1,16 @@
 <template>
-    <div class="stars_wrapper">
-        <div class="star-rating">
-            <label class="star-rating__star" 
-                v-for="rating in ratings" 
-                :class="{'is-selected': ((value >= rating) && value != null)}" 
-                v-on:click="set(rating)" 
-                v-on:mouseover="starOver(rating)" 
-                v-on:mouseout="starOut" 
-                :key="rating">
-            <input class="star-rating__checkbox" 
-            type="radio" 
-            :value="rating" 
-            v-model="value"></label>
-        </div>
+    <div class="star_rating">
+        <label class="star_rating__star" 
+            v-for="rating in ratings" 
+            :class="{'is-selected': ((value >= rating) && value != null)}" 
+            v-on:click="set(rating)" 
+            v-on:mouseover="starOver(rating)" 
+            v-on:mouseout="starOut" 
+            :key="rating">
+        <input class="star_rating__checkbox" 
+        type="radio" 
+        :value="rating" 
+        v-model="value"></label>
     </div>
 </template>
 <script>
@@ -52,7 +50,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.star-rating__star {
+.star_rating__star {
     display: inline-block;
     width:40px;
     height:38px;
@@ -110,7 +108,7 @@ export default {
       }
     }
 }
-.star-rating__checkbox {
+.star_rating__checkbox {
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);

@@ -1,25 +1,32 @@
 <template>
     <div class="popup_wrapper" v-if="popupVisible">
-        <div class="popup_content">
+        <div class="popup_content" :class="{'rating_submitted': submittedRating === true}">
             <div class="close_button" v-on:click="popupToggle()">
                 <img src="~@/assets/close.png" alt="" >
             </div>
             <h3 class="popup_main_heading">How did we do?</h3>
             <p class="heading_text">Please let us know how your food delievery was. It will really help us to keep improving our service!</p>
 
-            <div class="rating_block">
-                <h4 class="rating_heading">How would you rate your food?</h4>
-                <stars :id="1"></stars>
+            <div class="rating_wrapper">
+                <div class="rating_block">
+                    <h4 class="rating_heading">How would you rate your food?</h4>
+                    <stars :id="1"></stars>
+                </div>
+                <div class="rating_block">
+                    <h4 class="rating_heading">How would you rate your delivery driver?</h4>
+                    <stars :id="2"></stars>
+                </div>
+                <div class="rating_block">
+                    <h4 class="rating_heading">How would you rate your overall experience?</h4>
+                    <stars :id="3"></stars>
+                </div>
+                <div class="rating_response">
+                    <p class="response_note">Thank you for your response!</p>
+                </div>
             </div>
-            <div class="rating_block">
-                <h4 class="rating_heading">How would you rate your delivery driver?</h4>
-                <stars :id="2"></stars>
-            </div>
-            <div class="rating_block">
-                <h4 class="rating_heading">How would you rate your overall experience?</h4>
-                <stars :id="3"></stars>
-            </div>
+
             <button class="submit_button" v-on:click="submitRating()">Submit feedback</button>
+
         </div>
     </div>
 </template>
@@ -30,7 +37,8 @@ export default {
     data(){
         return {
             id: null,
-            popupVisible: true
+            popupVisible: true,
+            submittedRating: false
         }
     },
     components: {
@@ -38,6 +46,7 @@ export default {
     },
     methods: {
         submitRating(){
+            this.submittedRating = !this.submittedRating;
             console.log(JSON.stringify(this.$store.state.ratingData));
         },
         popupToggle(){
@@ -76,6 +85,7 @@ export default {
     text-align: center;
     animation-name: appear;
     animation-duration: 2s;
+    transition:height 200ms ease-in;
     @media screen and (max-width:767px){
         padding: 20px 35px;
     }
@@ -101,6 +111,7 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    transition:transform 200ms ease-in;
     @media screen and (max-width:767px){
         width:23px;
         height:23px;
@@ -117,8 +128,13 @@ export default {
     }
     &:hover {
         cursor:pointer;
-        transition:all 200ms ease-in;
+        transform:scale(1.1);
+        transition:transform 200ms ease-in;
     }
+}
+.rating_wrapper {
+    position: relative;
+    transition: height 300ms ease-in;
 }
 .rating_block {
     width:100%;
@@ -127,6 +143,30 @@ export default {
 
     @media screen and (max-width:767px){
         margin:0 0 15px 0;
+    }
+}
+.rating_response {
+    height: 100%;
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #FCFCFC;
+    transition: height 300ms ease-in;
+    .response_note {
+        @include regular;
+        font-size:21px;
+        line-height: 30px;
+        margin:0 0 32px 0;
+        @media screen and (max-width:767px){
+            font-size: 14px;
+            line-height: 16px;
+            margin:0 0 10px 0;
+        }
     }
 }
 .popup_main_heading {
@@ -187,6 +227,16 @@ export default {
         transition:all 200ms ease-in;
         background-color: #FCFCFC;
         color:#0021FF;
+    }
+}
+.rating_submitted {
+    .submit_button {
+        opacity: 0;
+        transform: rotateX(90deg);
+        transition: all 200ms ease;
+    }
+    .rating_response {
+        display: flex;
     }
 }
 </style>
