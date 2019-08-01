@@ -29,16 +29,13 @@ export default {
     },
     methods: {
         starOver(index) {
-            var self = this;
             this.hoverValue = this.value;
             return this.value = index;
         },
         starOut() {
-            var self = this;
             return this.value = this.hoverValue;
         },
         set(value) {
-            var self = this;
             this.hoverValue = value;
             if (this.id === 1){
                 this.$store.commit('RATING_DATA_FOOD',  this.value);
@@ -49,7 +46,6 @@ export default {
             if (this.id === 3){
                 this.$store.commit('RATING_DATA_EXPERIENCE',  this.value);
             }
-         
             return this.value = value;
         }
     },
@@ -61,6 +57,10 @@ export default {
     width:40px;
     height:38px;
     overflow:hidden;
+    @media screen and (max-width:767px){
+        width:20px;
+        height:19px;
+    }
     &:before {
         content:"";
         display:block;
@@ -69,6 +69,11 @@ export default {
         background-image: url("~@/assets/star-e.png");
         background-repeat: no-repeat;
         transition: transform 200ms ease-out;
+        @media screen and (max-width:767px){
+            width:20px;
+            height:19px;
+            background-size: contain;
+        }
     }
     &:after {
         content:"";
@@ -78,6 +83,11 @@ export default {
         background-image: url("~@/assets/star.png");
         background-repeat: no-repeat;
         transition: transform 200ms ease-out;
+        @media screen and (max-width:767px){
+            width:20px;
+            height:19px;
+            background-size: contain;
+        }
     }
     &:hover {
       cursor: pointer;
@@ -87,10 +97,16 @@ export default {
       &:before {
         transform: translateY(-38px);
         transition: transform 200ms ease-in;
+        @media screen and (max-width:767px){
+            transform: translateY(-19px);
+        }
       }
       &:after {
         transform: translateY(-38px);
         transition: transform 200ms ease-in;
+        @media screen and (max-width:767px){
+            transform: translateY(-19px);
+        }
       }
     }
 }
