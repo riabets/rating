@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "Larsseit";
+    src: url("~@/assets/font/larsseit.ttf") format("truetype");
+}
+@mixin regular {
+    font-family: "Larsseit";
+}
