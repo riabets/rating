@@ -45,10 +45,12 @@ export default {
         Stars
     },
     methods: {
+        //Set rating result into JSON and showing thank you note
         submitRating(){
             this.submittedRating = !this.submittedRating;
             console.log(JSON.stringify(this.$store.state.ratingData));
         },
+        //Close popup
         popupToggle(){
             this.popupVisible = !this.popupVisible;
         }

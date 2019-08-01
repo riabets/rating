@@ -26,6 +26,7 @@ export default {
         'id': Number,
     },
     methods: {
+        //Stars hover functionality and set value commit to store
         starOver(index) {
             this.hoverValue = this.value;
             return this.value = index;
@@ -118,6 +119,5 @@ export default {
     padding: 0; 
     border: 0;
 }
-
 </style>
 

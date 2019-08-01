@@ -8,6 +8,7 @@ export default new Vuex.Store({
         ratingData:{},
     },
     mutations: {
+        //Mutation of rating object
         RATING_DATA_FOOD(state, value) {
             state.ratingData = {
                 ...state.ratingData,
