@@ -9,17 +9,17 @@
 
             <div class="rating_block">
                 <h4 class="rating_heading">How would you rate your food?</h4>
-                <stars></stars>
+                <stars :id="1"></stars>
             </div>
             <div class="rating_block">
                 <h4 class="rating_heading">How would you rate your delivery driver?</h4>
-                <stars></stars>
+                <stars :id="2"></stars>
             </div>
             <div class="rating_block">
                 <h4 class="rating_heading">How would you rate your overall experience?</h4>
-                <stars></stars>
+                <stars :id="3"></stars>
             </div>
-            <p class="submit_button">Submit feedback</p>
+            <button class="submit_button">Submit feedback</button>
         </div>
     </div>
 </template>
@@ -27,9 +27,14 @@
 import Stars from "./Stars";
 
 export default {
+    data(){
+        return {
+            id: null
+        }
+    },
     components: {
         Stars
-    }
+    },
 }
 </script>
 <style lang="scss">
@@ -58,6 +63,7 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     padding:60px 80px;
+    text-align: center;
 }
 .close_button {
     position:absolute;
@@ -118,6 +124,8 @@ export default {
     margin:0;
     transition:all 200ms ease-in;
     box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+    position:relative;
+    overflow:hidden;
     &:hover {
         cursor:pointer;
         transition:all 200ms ease-in;
