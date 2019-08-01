@@ -19,7 +19,7 @@
                 <h4 class="rating_heading">How would you rate your overall experience?</h4>
                 <stars :id="3"></stars>
             </div>
-            <button class="submit_button">Submit feedback</button>
+            <button class="submit_button" v-on:click="submitRating()">Submit feedback</button>
         </div>
     </div>
 </template>
@@ -35,6 +35,11 @@ export default {
     components: {
         Stars
     },
+    methods: {
+        submitRating(){
+            console.log(JSON.stringify(this.$store.state.ratingData));
+        }
+    }
 }
 </script>
 <style lang="scss">

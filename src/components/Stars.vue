@@ -11,7 +11,6 @@
             <input class="star-rating__checkbox" 
             type="radio" 
             :value="rating" 
-            :name="name" 
             v-model="value"></label>
         </div>
     </div>
@@ -26,7 +25,6 @@ export default {
         };
     },    
     props: {
-        'name': String,
         'id': Number,
     },
     methods: {
@@ -42,6 +40,16 @@ export default {
         set(value) {
             var self = this;
             this.hoverValue = value;
+            if (this.id === 1){
+                this.$store.commit('RATING_DATA_FOOD',  this.value);
+            }
+            if (this.id === 2){
+                this.$store.commit('RATING_DATA_DRIVER',  this.value);
+            }
+            if (this.id === 3){
+                this.$store.commit('RATING_DATA_EXPERIENCE',  this.value);
+            }
+         
             return this.value = value;
         }
     },
